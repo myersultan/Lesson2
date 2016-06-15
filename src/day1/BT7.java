@@ -11,4 +11,9 @@ public class BT7 extends Tank {
         setCrew(5);
         setMaxSpeed(100);
     }
+
+    @Override
+    public String toString() {
+        return "This is a tank " + this.getName();
+    }
 }

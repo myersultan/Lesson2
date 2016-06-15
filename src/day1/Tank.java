@@ -72,4 +72,13 @@ public class Tank {
             System.out.println(this.getName() + " color: " + this.getColor() + ", crew: " + this.getCrew() + ", maxSpeed: " + this.getMaxSpeed());
         }
 
+    @Override
+    public String toString() {
+        return "This is a tank " + this.getName();
+    }
+
+    public void move(){
+        System.out.println(this.getName() + " move!");
+    }
+
     }

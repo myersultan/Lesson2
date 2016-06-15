@@ -10,4 +10,6 @@ public class Tiger extends Tank {
         setCrew(7);
         setMaxSpeed(50);
     }
+
+
 }

@@ -16,6 +16,10 @@ public class Launcher {
         t34.printInfo();
         tiger.printInfo();
 
+        tiger.move();
+        t34.move();
+        System.out.println(bt7.toString());
+
 
 
     }

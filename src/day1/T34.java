@@ -10,4 +10,6 @@ public class T34 extends Tank {
         setCrew(6);
         setMaxSpeed(400);
     }
+
+
 }
