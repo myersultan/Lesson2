@@ -103,15 +103,37 @@ public class SimpleLinkedList implements Iterable<Object>{
 
 
     class SLLIterator implements Iterator<Object>{
+        private Node prev;
         private Node cp;
 
         public SLLIterator(){
 
         }
 
-        @Override
-        public void remove() {
 
+
+        public void remove(Object o) {
+            if(!hasNext() &&prev == null){
+                cp = null;
+                root = null;
+            }
+
+            if (!hasNext() && prev != null){
+                cp = null;
+                prev.ref = null;
+            }
+
+            if (hasNext() && prev == null){
+                root = cp.ref;
+                cp = null;
+            }
+
+            if (hasNext() && prev != null){
+                prev.ref = cp.ref;
+                cp = cp.ref;
+            }
+
+            size --;
         }
 
         @Override
