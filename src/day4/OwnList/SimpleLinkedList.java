@@ -16,12 +16,12 @@ public class SimpleLinkedList {
 
     public void addFirst(Object obj){
 
-        Node node = new Node();
-        node.o = obj;
+        Node n = new Node();
+        n.o = obj;
         if (root != null){
-            node.ref = root;
+            n.ref = root;
         }
-        root = node;
+        root = n;
         size ++;
 
     }
@@ -31,7 +31,7 @@ public class SimpleLinkedList {
         n.o = obj;
         if (root == null){
             root = n;
-        }else {
+        } else {
             Node last = root;
             Node cp = root;
             while (cp.ref != null){
@@ -48,25 +48,25 @@ public class SimpleLinkedList {
         Node previous = null;
         Node cp = root;
 
-        for (int i = 0; cp!=null && cp.ref != null ; i++) {
+        do {
             if (cp.o == prev){
                 previous = cp;
                 break;
             }
+            cp = cp.ref;
+        } while (cp != null && cp.ref != null);
 
-            if (previous == null){
-                throw new IllegalStateException("List is empty");
-            }
-
-            Node n = new Node();
-            n.o = obj;
-            if (previous.ref != null){
-                n.ref = previous.ref;
-            }
-            previous.ref = n;
-            size++;
-            
+        if (previous == null){
+            throw new IllegalStateException("List does not contain prev object.");
         }
+
+        Node n = new Node();
+        n.o = obj;
+        if (previous.ref != null){
+            n.ref = previous.ref;
+        }
+        previous.ref = n;
+        size++;
 
     }
 
@@ -74,8 +74,27 @@ public class SimpleLinkedList {
         return size;
     }
 
+    public void printList(){
+        if (size == 0){
+            System.out.println("List is empty");
+        }
+
+        System.out.print("{ ");
+        Node cp = root;
+        while (cp.ref != null){
+            System.out.print(cp.o + ", ");
+            cp = cp.ref;
+        }
+        System.out.print(cp.o);
+        System.out.println(" }");
+    }
+
     private class Node{
         Object o;
         Node ref;
+    }
+
+    private class SLLIterator {
+        private Node node;
     }
 }
