@@ -1,5 +1,7 @@
 package day4.OwnList;
 
+import org.omg.CORBA.NO_IMPLEMENT;
+
 /**
  * Created by admin on 7/13/2016.
  */
@@ -25,6 +27,20 @@ public class SimpleLinkedList {
     }
 
     public void addLast(Object obj){
+        Node n = new Node();
+        n.o = obj;
+        if (root == null){
+            root = n;
+        }else {
+            Node last = root;
+            Node cp = root;
+            while (cp.ref != null){
+                last = cp;
+                cp = cp.ref;
+            }
+            last.ref = n;
+        }
+        size++;
 
     }
 
