@@ -45,6 +45,28 @@ public class SimpleLinkedList {
     }
 
     public void addAfter(Object obj, Object prev){
+        Node previous = null;
+        Node cp = root;
+
+        for (int i = 0; cp!=null && cp.ref != null ; i++) {
+            if (cp.o == prev){
+                previous = cp;
+                break;
+            }
+
+            if (previous == null){
+                throw new IllegalStateException("List is empty");
+            }
+
+            Node n = new Node();
+            n.o = obj;
+            if (previous.ref != null){
+                n.ref = previous.ref;
+            }
+            previous.ref = n;
+            size++;
+            
+        }
 
     }
 
