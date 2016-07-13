@@ -111,24 +111,28 @@ public class SimpleLinkedList implements Iterable<Object>{
         }
 
 
-
-        public void remove(Object o) {
+        @Override
+        public void remove() {
             if(!hasNext() &&prev == null){
+                //only one element
                 cp = null;
                 root = null;
             }
 
             if (!hasNext() && prev != null){
+                //last elemenet
                 cp = null;
                 prev.ref = null;
             }
 
             if (hasNext() && prev == null){
+                //first element
                 root = cp.ref;
                 cp = null;
             }
 
             if (hasNext() && prev != null){
+                //middle element
                 prev.ref = cp.ref;
                 cp = cp.ref;
             }
@@ -143,11 +147,13 @@ public class SimpleLinkedList implements Iterable<Object>{
 
         @Override
         public Object next() {
-            if (cp == null && root != null){
+            if (cp == null){
+                //first
                 cp = root;
                 return cp.o;
             }
             if (hasNext()){
+                prev = cp;
                 cp = cp.ref;
                 return cp.o;
             }
