@@ -2,10 +2,12 @@ package day4.OwnList;
 
 import org.omg.CORBA.NO_IMPLEMENT;
 
+import java.util.Iterator;
+
 /**
  * Created by admin on 7/13/2016.
  */
-public class SimpleLinkedList {
+public class SimpleLinkedList implements Iterable<Object>{
 
     private Node root;
     private int size;
@@ -94,7 +96,40 @@ public class SimpleLinkedList {
         Node ref;
     }
 
-    private class SLLIterator {
-        private Node node;
+    @Override
+    public Iterator<Object> iterator(){
+        return new SLLIterator();
+    }
+
+
+    class SLLIterator implements Iterator<Object>{
+        private Node cp;
+
+        public SLLIterator(){
+
+        }
+
+        @Override
+        public void remove() {
+
+        }
+
+        @Override
+        public boolean hasNext() {
+            return ((cp==null && root != null) || (cp != null && cp.ref != null));
+        }
+
+        @Override
+        public Object next() {
+            if (cp == null && root != null){
+                cp = root;
+                return cp.o;
+            }
+            if (hasNext()){
+                cp = cp.ref;
+                return cp.o;
+            }
+            throw new IllegalStateException("List has no more elements.");
+        }
     }
 }
