@@ -15,6 +15,7 @@ public class SimpleArrayList {
         theSize = 0;
     }
 
+
     public int size(){
         return theSize;
     }
