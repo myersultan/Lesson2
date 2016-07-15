@@ -7,4 +7,8 @@ public class SimpleArrayList {
 
     private Object[] list;
     private int size;
+
+    public SimpleArrayList() {
+
+    }
 }
